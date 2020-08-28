@@ -3,10 +3,12 @@ import schedule
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 options = webdriver.ChromeOptions()
 driver = webdriver.Chrome(options=options)
+driver.implicitly_wait(5)
 
 # url='https://www.supremenewyork.com/shop/all'
 # driver.get(url)
@@ -21,6 +23,5 @@ size_select_element = Select(size_element)
 size_select_element.select_by_value('77643')
 selector = '#add-remove-buttons > input'
 driver.find_element_by_css_selector(selector).click()
-selector = '.sidebar > #cart > .checkout'
-driver.find_element_by_css_selector(selector).click()
+driver.find_element_by_xpath('//*[@id="cart"]/a[2]').click()
 # driver.quit()
